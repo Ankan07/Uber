@@ -118,7 +118,7 @@ app.get('/v1/all',(req,res)=>{
         else
         res.status(500).send(err);
     })
-    on
+    
 })
 
 app.listen(port,()=>{
