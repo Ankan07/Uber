@@ -16,22 +16,28 @@ app.post('/v1/create_user',(req,res)=>{
     })
     user.save().then((doc)=>{
        
-        res.status(200).send(doc);
+        res.status(200).send(doc._id);
 
     }).catch((e)=>{
         res.status(500).send(e);
     })
+    //only id
 })
 app.post('/v1/create_journey',(req,res)=>{
     
     Usercollection.findById(req.body.uid).then((doc)=>{
      doc.Journeys.push({start:req.body.start,end:req.body.end});
      doc.save().then((d)=>{
-        res.status(200).send(d);
+         var x=d.Journeys;
+         var y=x[x.length-1];
+         var z=y._id;
+        res.status(200).send(z);
      }).catch((e)=>{
         res.status(500).send(e);
     })
    
+    }).catch((er)=>{
+        res.status(406).send(er);
     });
 
 
@@ -44,7 +50,7 @@ app.post('/v1/update_journey',(req,res)=>{
         subdoc.end_time=req.body.end_time;
   
      doc.save().then((doce)=>{
-          res.status(200).send(doce);
+          res.status(200).send("sucess");
       }).catch((err)=>{
            res.status(500).send(err);
       })
@@ -65,7 +71,7 @@ app.post('/v1/addlocation_log',(req,res)=>{
         
   
      doc.save().then((doce)=>{
-          res.status(200).send(doce);
+          res.status(200).send("sucess");
       }).catch((err)=>{
            res.status(500).send(err);
       })
@@ -112,6 +118,7 @@ app.get('/v1/all',(req,res)=>{
         else
         res.status(500).send(err);
     })
+    on
 })
 
 app.listen(port,()=>{
