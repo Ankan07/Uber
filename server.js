@@ -3,6 +3,7 @@ var {Usercollection}=require('./models/usercollection');
 //var {Journeymodel}=require('./models/Journeymodel');
 
 var {mongoose}=require('./db/mongoose');
+const port=process.env.PORT || 1000;
 var express=require('express');
 var app=express();
 var bodyparser=require('body-parser');
@@ -105,6 +106,6 @@ app.post('/v1/get_journey_details',(req,res)=>{
     })
 })
 
-app.listen('1000',()=>{
-    console.log("app listening on port 1000");
+app.listen(port,()=>{
+    console.log(`app listening on port ${port}`);
 })
