@@ -105,6 +105,14 @@ app.post('/v1/get_journey_details',(req,res)=>{
         res.send(subdoc);
     })
 })
+app.get('/v1/all',(req,res)=>{
+    Usercollection.find({},function(err,users){
+        if(users)
+        res.status(200).send(users);
+        else
+        res.status(500).send(err);
+    })
+})
 
 app.listen(port,()=>{
     console.log(`app listening on port ${port}`);
