@@ -5,6 +5,7 @@ var {locationlogs}=require('../models/locationlogs');
 
 //Schema.Types.ObjectId
 var Journey= new mongoose.Schema({
+  "type":String,
     start:{
     type:geopointSchema
     },

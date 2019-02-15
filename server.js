@@ -50,7 +50,7 @@ app.post('/v1/update_journey',(req,res)=>{
         subdoc.end_time=req.body.end_time;
   
      doc.save().then((doce)=>{
-          res.status(200).send("sucess");
+          res.status(200).send({"message":"success"});
       }).catch((err)=>{
            res.status(500).send(err);
       })
@@ -71,7 +71,7 @@ app.post('/v1/addlocation_log',(req,res)=>{
         
   
      doc.save().then((doce)=>{
-          res.status(200).send("sucess");
+          res.status(200).send({"message":"sucess"});
       }).catch((err)=>{
            res.status(500).send(err);
       })
